@@ -20,6 +20,11 @@ fi
 USERID=$(id -u)
 # This function should validate the previous command and should inform the user whether it is success or failure
 
+if [ $USERID -ne 0 ]
+then
+   echo "ERROR:: Please run this script with root access"
+   exit 1
+fi
 
 # It is our responsibility to check whether installation is success or not
 yum install mysql -y &>>$LOGFILE
