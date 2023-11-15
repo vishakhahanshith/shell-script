@@ -1,9 +1,9 @@
 #!/bin/bash
 # Our program goal is to install mysql
 DATE=$(date +%F-%H-%M-%S)
-LOGFILE=/tmp/
-USERID=$(id -u)
-# This function should validate the previous command and should inform the user whether it is success or failure
+SCRIPT_NAME=$0
+LOGFILE=/tmp/$SCRIPT_NAME-$DATE.log
+
 VALIDATE(){
     #$1 -- It will receive the argument1
     if [ $1 -ne 0 ]
@@ -17,11 +17,15 @@ else
 fi
 }
 
+USERID=$(id -u)
+# This function should validate the previous command and should inform the user whether it is success or failure
+
+
 # It is our responsibility to check whether installation is success or not
-yum install mysql -y
+yum install mysql -y &>>$LOGFILE
 
 VALIDATE $?
 
-yum install postfix -y
+yum install postfix -y &>>$LOGFILE
 
 VALIDATE $?
