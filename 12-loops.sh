@@ -5,7 +5,7 @@ DATE=$(date +%F) # This will print the date in proper format
 LOGSDIR=/home/centos/shellscript-logs # This is the location where you will be storing all the shell script log files
 # inside /home/centos/shellscript-logs/script-name-date.log
 SCRIPT_NAME=$0 # This will print the script name
-LOGFILE=$LOGSDIR/$SCRIPT_NAME-$DATE.log
+LOGFILE=$LOGSDIR/$SCRIPT_NAME-$DATE.log # Storing log files here
 USERID=$(id -u)
 R="\e[31m" # Red
 N="\e[0m" # No colour
